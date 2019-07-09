@@ -30,4 +30,4 @@ time.sleep(5)
 driver.close()
 driver.quit()
 
-print("Test Completed!")
+print("Message Sent!")
