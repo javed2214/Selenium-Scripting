@@ -8,36 +8,42 @@ driver = webdriver.Chrome('C:/Users/hp/Desktop/chromedriver.exe')
 driver.implicitly_wait(10)
 driver.maximize_window()
 
+fam = 'Y'
+
 driver.get("https://web.whatsapp.com/")
 
 print("Scan QR Code!")
 
-x = int(input("Enter Number of Recipients: "))
+while(fam != 'N'):
 
-print("Enter Names: ")
+	x = int(input("\nEnter Number of Recipients: "))
 
-nameList=[]
+	print("Enter Names: ")	# Case Sensitive
 
-for i in range(x):
-	p = input()
-	nameList.append(p)
+	nameList=[]
 
-msg = input("Enter Message: ")
-count = int(input("Enter Count: "))
+	for i in range(x):
+		p = input()
+		nameList.append(p)
 
-for name in nameList:
+	msg = input("Enter Message: ")
+	count = int(input("Enter Count: "))
 
-	user = driver.find_element_by_xpath('//span[@title = "{}"]'.format(name))
-	user.click()
+	for name in nameList:
 
-	for i in range(count):
-		msg_box = driver.find_element_by_class_name("_3u328").send_keys(msg)
-		btn = driver.find_element_by_class_name("_3M-N-")
-		btn.click()
+		user = driver.find_element_by_xpath('//span[@title = "{}"]'.format(name))
+		user.click()
+
+		for i in range(count):
+			msg_box = driver.find_element_by_class_name("_3u328").send_keys(msg)
+			btn = driver.find_element_by_class_name("_3M-N-")
+			btn.click()
+
+	print("\n********** Message Sent!!! **********\n")
+
+	fam = input("Press Y to Continue else Press N: ")
 
 time.sleep(5)
 
 driver.close()
 driver.quit()
-
-print("\n********** Message Sent!!! **********\n")
