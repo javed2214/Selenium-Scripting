@@ -40,4 +40,4 @@ time.sleep(5)
 driver.close()
 driver.quit()
 
-print("******** Message Sent!!! ********")
+print("\n********** Message Sent!!! **********\n")
